@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientesApp.Views.ClienteDetailPage"
+             xmlns:viewmodels="clr-namespace:ClientesApp.ViewModels"
+             xmlns:handlers="clr-namespace:ClientesApp.Handlers"
+             xmlns:views="clr-namespace:ClientesApp.Views.FontIcons"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodels:ClienteDetailViewModel"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="Transparent" StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
+
+    <Grid>
+        <Grid Background="{DynamicResource BackgroundGradient}" />
+        <ScrollView VerticalScrollBarVisibility="Default">
+            <StackLayout
+                Margin="30"
+                HorizontalOptions="Fill"
+                Spacing="20"
+                VerticalOptions="Fill">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{DynamicResource White}" />
+
+                <StackLayout HorizontalOptions="Fill" Spacing="5">
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Nome" TextColor="{DynamicResource White}"/>
+                                <Span Text=" *" TextColor="Red"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="LineAwesome"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:LineAwesome.User}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Text="{Binding Cliente.Name}"
+                                Margin="8,0"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Nome"
+                                PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                        </StackLayout>
+                    </Border>
+                </StackLayout>
+
+                <Label Text="{Binding NameError}" TextColor="Red" FontSize="12"
+                       IsVisible="{Binding NameError, Converter={StaticResource NullToFalseConverter}}" />
+
+                <StackLayout HorizontalOptions="Fill" Spacing="5">
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Sobrenome" TextColor="{DynamicResource White}"/>
+                                <Span Text=" *" TextColor="Red"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="LineAwesome"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:LineAwesome.User}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Text="{Binding Cliente.Lastname}"
+                                Margin="8,0"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Sobrenome"
+                                PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                        </StackLayout>
+                    </Border>
+                </StackLayout>
+
+                <Label Text="{Binding LastNameError}" TextColor="Red" FontSize="12"
+                       IsVisible="{Binding LastNameError, Converter={StaticResource NullToFalseConverter}}" />
+
+                <StackLayout HorizontalOptions="Fill" Spacing="5">
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Idade" TextColor="{DynamicResource White}"/>
+                                <Span Text=" *" TextColor="Red"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="LineAwesome"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:LineAwesome.User}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Text="{Binding Cliente.Age}"
+                                Margin="8,0"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Idade"
+                                PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                        </StackLayout>
+                    </Border>
+                </StackLayout>
+
+                <Label Text="{Binding AgeError}" TextColor="Red" FontSize="12"
+                       IsVisible="{Binding AgeError, Converter={StaticResource NullToFalseConverter}}" />
+
+                <Label Text="Endereço"
+                       TextColor="{DynamicResource White}"
+                       FontSize="16"
+                       FontFamily="OpenSansSemibold"
+                       FontAttributes="Bold" Margin="0,20,0,0" />
+
+                <StackLayout HorizontalOptions="Fill" Spacing="5">
+                    <StackLayout HorizontalOptions="Fill" Spacing="5">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="CEP" TextColor="{DynamicResource White}"/>
+                                    <Span Text=" *" TextColor="Red"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Border
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                            HorizontalOptions="FillAndExpand"
+                            Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                            <StackLayout
+                                Margin="16,2"
+                                HorizontalOptions="Fill"
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontFamily="LineAwesome"
+                                    FontSize="22"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static views:LineAwesome.MapMarker}"
+                                    TextColor="{DynamicResource BaseIconColor}"
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <handlers:BorderlessEntry
+                                    Text="{Binding Cliente.Address.ZipCode}"
+                                    Margin="8,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Numeric"
+                                    Placeholder="CEP"
+                                    PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+
+                    <Label Text="{Binding ZipCodeError}" TextColor="Red" FontSize="12"
+                           IsVisible="{Binding ZipCodeError, Converter={StaticResource NullToFalseConverter}}" />
+
+                    <StackLayout HorizontalOptions="Fill" Spacing="5">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Rua" TextColor="{DynamicResource White}"/>
+                                    <Span Text=" *" TextColor="Red"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Border
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                            HorizontalOptions="FillAndExpand"
+                            Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                            <StackLayout
+                                Margin="16,2"
+                                HorizontalOptions="Fill"
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontFamily="LineAwesome"
+                                    FontSize="22"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static views:LineAwesome.MapMarker}"
+                                    TextColor="{DynamicResource BaseIconColor}"
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <handlers:BorderlessEntry
+                                    Text="{Binding Cliente.Address.Street}"
+                                    Margin="8,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Default"
+                                    Placeholder="Rua"
+                                    PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+
+                    <Label Text="{Binding StreetError}" TextColor="Red" FontSize="12"
+                       IsVisible="{Binding StreetError, Converter={StaticResource NullToFalseConverter}}" />
+
+                    <StackLayout HorizontalOptions="Fill" Spacing="5">
+                        <Label Text="Complemento" TextColor="{DynamicResource White}" />
+                        <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                            <StackLayout
+                            Margin="16,2"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                                <Label
+                                FontFamily="LineAwesome"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:LineAwesome.MapMarker}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                                <handlers:BorderlessEntry
+                                Text="{Binding Cliente.Address.Complement}"
+                                Margin="8,0"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Complemento"
+                                PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="Fill" Spacing="5">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Cidade" TextColor="{DynamicResource White}"/>
+                                    <Span Text=" *" TextColor="Red"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                            <StackLayout
+                            Margin="16,2"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                                <Label
+                                FontFamily="LineAwesome"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:LineAwesome.MapMarker}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                                <handlers:BorderlessEntry
+                                Text="{Binding Cliente.Address.City}"
+                                Margin="8,0"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Cidade"
+                                PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+
+                    <Label Text="{Binding CityError}" TextColor="Red" FontSize="12"
+                       IsVisible="{Binding CityError, Converter={StaticResource NullToFalseConverter}}" />
+
+                    <StackLayout HorizontalOptions="Fill" Spacing="5">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Estado" TextColor="{DynamicResource White}"/>
+                                    <Span Text=" *" TextColor="Red"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Border
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="{DynamicResource EntryAndEditorsBackgroundColor}"
+                            HorizontalOptions="FillAndExpand"
+                            Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                            <StackLayout
+                                Margin="16,2"
+                                HorizontalOptions="Fill"
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontFamily="LineAwesome"
+                                    FontSize="22"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static views:LineAwesome.MapMarker}"
+                                    TextColor="{DynamicResource BaseIconColor}"
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <handlers:BorderlessEntry
+                                    Text="{Binding Cliente.Address.State}"
+                                    Margin="8,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Default"
+                                    Placeholder="Estado"
+                                    PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+
+                    <Label Text="{Binding StateError}" TextColor="Red" FontSize="12"
+                       IsVisible="{Binding StateError, Converter={StaticResource NullToFalseConverter}}" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,20">
+                        <Button Text="Cancelar"
+                            BackgroundColor="{DynamicResource Secondary}"
+                            TextColor="{DynamicResource Black}"
+                            Command="{Binding CancelCommand}"
+                            Grid.Column="0">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                FontFamily="LineAwesome"
+                                Glyph="{x:Static views:LineAwesome.Close}"
+                                Size="22"
+                                Color="{DynamicResource Black}" />
+                            </Button.ImageSource>
+                        </Button>
+                        <Button
+                        Grid.Column="1"
+                        FontSize="18"
+                        HeightRequest="50"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Command="{Binding SaveCommand}"
+                        Text="Salvar">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                FontFamily="LineAwesome"
+                                Glyph="{x:Static views:LineAwesome.Save}"
+                                Size="22"
+                                Color="{DynamicResource White}" />
+                            </Button.ImageSource>
+                        </Button>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

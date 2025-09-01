@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ClientesApp.ViewModels"
+             xmlns:models="clr-namespace:ClientesApp.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:views="clr-namespace:ClientesApp.Views.FontIcons"
+             x:Class="ClientesApp.Views.MainPage"
+             Title=""
+             x:Name="ClientesList"
+             x:DataType="viewmodels:MainViewModel"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="Transparent" StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
+
+    <Grid>
+        <Grid Background="{DynamicResource BackgroundGradient}" />
+
+        <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+
+            <Label
+                Grid.Row="0"
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource Title2}"
+                Text="Clientes Cadastrados"
+                TextColor="{DynamicResource White}" />
+
+            <CollectionView ItemsSource="{Binding Clientes}"
+                            Grid.Row="1"
+                            Margin="0,10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ClienteModel">
+                        <Grid Padding="10" ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout>
+                                <Label TextColor="{StaticResource White}" Text="{Binding FullName}" FontSize="16"
+                                       FontAttributes="Bold" />
+                                <Label TextColor="{StaticResource White}"
+                                       Text="{Binding Age, StringFormat='Idade: {0}'}" />
+                                <Label TextColor="{StaticResource White}" Text="{Binding Address}"
+                                       LineBreakMode="TailTruncation" />
+                            </VerticalStackLayout>
+
+                            <HorizontalStackLayout HorizontalOptions="EndAndExpand"
+                                                   Spacing="10"
+                                                   Grid.Column="1">
+                                <Button Style="{StaticResource PrimaryButtonStyle}"
+                                        Command="{Binding Source={x:Reference ClientesList}, Path=BindingContext.EditClienteCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Editar">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            FontFamily="LineAwesome"
+                                            Glyph="{x:Static views:LineAwesome.Edit}"
+                                            Size="22"
+                                            Color="{DynamicResource White}" />
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button Style="{StaticResource PrimaryButtonStyle}"
+                                        BackgroundColor="{StaticResource Secondary}"
+                                        Command="{Binding Source={x:Reference ClientesList}, Path=BindingContext.DeleteClienteCommand}"
+                                        CommandParameter="{Binding .}"
+                                        TextColor="{DynamicResource Black}"
+                                        Text="Excluir">
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            FontFamily="LineAwesome"
+                                            Glyph="{x:Static views:LineAwesome.Trash}"
+                                            Size="22"
+                                            Color="{DynamicResource Black}" />
+                                    </Button.ImageSource>
+                                </Button>
+                            </HorizontalStackLayout>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Grid.Row="2"
+                    FontSize="18"
+                    HeightRequest="50"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="Novo Cliente"
+                    HorizontalOptions="CenterAndExpand"
+                    Command="{Binding AddClienteCommand}">
+                <Button.ImageSource>
+                    <FontImageSource
+                        FontFamily="LineAwesome"
+                        Glyph="{x:Static views:LineAwesome.UserPlus}"
+                        Size="22"
+                        Color="{DynamicResource White}" />
+                </Button.ImageSource>
+            </Button>
+        </Grid>
+    </Grid>
+</ContentPage>

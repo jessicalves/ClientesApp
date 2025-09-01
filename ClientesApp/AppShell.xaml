@@ -3,12 +3,10 @@
     x:Class="ClientesApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ClientesApp"
+    xmlns:views="clr-namespace:ClientesApp.Views"
     Title="ClientesApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <ShellContent Title="Clientes" 
+                  ContentTemplate="{DataTemplate views:MainPage}" 
+                  Route="MainPage" />
 </Shell>

@@ -42,4 +42,21 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <LinearGradientBrush x:Key="BackgroundGradient">
+        <GradientStop Offset="0.1" Color="#38b8f2" />
+        <GradientStop Offset="1.0" Color="#843cf7" />
+    </LinearGradientBrush>
+
+    <Color x:Key="PlaceholderColor">#7B7B7B</Color>
+    <Color x:Key="EntryAndEditorsBackgroundColor">#CBD6E2</Color>
+    <Color x:Key="EntryAndEditorsBorderColor">#F5F8Fa</Color>
+    <Color x:Key="BaseIconColor">#505050</Color>
+    <Color x:Key="BaseTextColor">#333942</Color>
+
+    <Color x:Key="MainMenuHeaderBackgroundColor">Transparent</Color>
+    <Color x:Key="MainMenuBackgroundColor">Transparent</Color>
+    <Color x:Key="MainMenuSeparatorColor">Transparent</Color>
+    <Color x:Key="MainMenuTextColor">#333942</Color>
+    <Color x:Key="MainMenuIconColor">#333942</Color>
 </ResourceDictionary>
