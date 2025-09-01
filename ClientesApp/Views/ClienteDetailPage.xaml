@@ -208,7 +208,11 @@
                                     HorizontalOptions="FillAndExpand"
                                     Keyboard="Numeric"
                                     Placeholder="CEP"
-                                    PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                                    PlaceholderColor="{DynamicResource PlaceholderColor}" >
+                                    <Entry.Behaviors>
+                                        <toolkit:MaskedBehavior Mask="XXXXX-XXX" />
+                                    </Entry.Behaviors>
+                                </handlers:BorderlessEntry>
                             </StackLayout>
                         </Border>
                     </StackLayout>
