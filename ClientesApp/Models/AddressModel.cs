@@ -1,16 +1,22 @@
-﻿namespace ClientesApp.Models
-{
-    public class AddressModel
-    {
-        public string Street { get; set; } = string.Empty;
-        public string Complement { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string State { get; set; } = string.Empty;
-        public string ZipCode { get; set; } = string.Empty;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-        public override string ToString()
-        {
-            return $"{Street}, {Complement}, {City} - {State}, {ZipCode}";
-        }
+namespace ClientesApp.Models
+{
+    public partial class AddressModel : ObservableObject
+    {
+        [ObservableProperty]
+        private string _street = string.Empty;
+
+        [ObservableProperty]
+        private string _complement = string.Empty;
+
+        [ObservableProperty]
+        private string _city = string.Empty;
+
+        [ObservableProperty]
+        private string _state = string.Empty;
+
+        [ObservableProperty]
+        private string _zipCode = string.Empty;
     }
 }

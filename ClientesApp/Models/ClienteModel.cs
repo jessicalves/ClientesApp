@@ -1,12 +1,24 @@
-﻿namespace ClientesApp.Models
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Xml.Linq;
+
+namespace ClientesApp.Models
 {
-    public class ClienteModel
+    public partial class ClienteModel : ObservableObject
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Lastname { get; set; } = string.Empty;
-        public int Age { get; set; }
-        public AddressModel Address { get; set; } = new AddressModel();
+        [ObservableProperty]
+        private Guid _id;
+
+        [ObservableProperty]
+        private string _name = string.Empty;
+
+        [ObservableProperty]
+        private string _lastname = string.Empty;
+
+        [ObservableProperty]
+        private int _age;
+
+        [ObservableProperty]
+        private AddressModel _address = new AddressModel();
 
         public string FullName => $"{Name} {Lastname}";
     }

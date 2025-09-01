@@ -42,8 +42,17 @@
                                        FontAttributes="Bold" />
                                 <Label TextColor="{StaticResource White}"
                                        Text="{Binding Age, StringFormat='Idade: {0}'}" />
-                                <Label TextColor="{StaticResource White}" Text="{Binding Address}"
-                                       LineBreakMode="TailTruncation" />
+                                <Label TextColor="{StaticResource White}" LineBreakMode="TailTruncation">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0}, {1}, {2} - {3}, {4}">
+                                            <Binding Path="Address.Street"/>
+                                            <Binding Path="Address.Complement"/>
+                                            <Binding Path="Address.City"/>
+                                            <Binding Path="Address.State"/>
+                                            <Binding Path="Address.ZipCode"/>
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
                             </VerticalStackLayout>
 
                             <HorizontalStackLayout HorizontalOptions="EndAndExpand"

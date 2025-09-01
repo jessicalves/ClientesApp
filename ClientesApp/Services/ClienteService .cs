@@ -27,10 +27,8 @@ namespace ClientesApp.Services
             var existing = _clientes.FirstOrDefault(c => c.Id == cliente.Id);
             if (existing != null)
             {
-                existing.Name = cliente.Name;
-                existing.Lastname = cliente.Lastname;
-                existing.Age = cliente.Age;
-                existing.Address = cliente.Address;
+                _clientes.Remove(existing);
+                _clientes.Add(cliente);
             }
             return Task.CompletedTask;
         }
