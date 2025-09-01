@@ -31,7 +31,28 @@
                 Text="Clientes Cadastrados"
                 TextColor="{DynamicResource White}" />
 
+            <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                 Grid.Row="1"
+                                 IsVisible="{Binding NotHasClientes}">
+                <Label
+                    HorizontalOptions="Center"
+                    FontFamily="LineAwesome"
+                    Text="{x:Static views:LineAwesome.SmileO}"
+                    FontSize="30"
+                    TextColor="{DynamicResource White}"/>
+                <Label Text="Você ainda não possui clientes cadastrado."
+                       FontFamily="OpenSansSemibold"
+                       FontSize="18"
+                       TextColor="{DynamicResource White}"/>
+                <Label Text="Cadastre um novo cliente."
+                        FontFamily="OpenSansRegular"
+                        FontSize="16"
+                        TextColor="{DynamicResource White}"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+            
             <CollectionView ItemsSource="{Binding Clientes}"
+                            IsVisible="{Binding HasClientes}"
                             Grid.Row="1"
                             Margin="0,10">
                 <CollectionView.ItemTemplate>

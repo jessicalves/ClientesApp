@@ -13,6 +13,9 @@ namespace ClientesApp.ViewModels
         private readonly IClienteService _clienteService;
         [ObservableProperty] private ObservableCollection<ClienteModel> _clientes = [];
 
+        [ObservableProperty] private bool _hasClientes;
+        [ObservableProperty] private bool _notHasClientes;
+
         public MainViewModel(IClienteService clienteService)
         {
             _clienteService = clienteService;
@@ -22,6 +25,8 @@ namespace ClientesApp.ViewModels
         private async void LoadClientes()
         {
             Clientes = await _clienteService.GetClientesAsync();
+            HasClientes = Clientes.Count > 0;
+            NotHasClientes = !HasClientes;
         }
 
         [RelayCommand]
