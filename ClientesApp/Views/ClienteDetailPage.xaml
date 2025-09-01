@@ -5,6 +5,7 @@
              x:Class="ClientesApp.Views.ClienteDetailPage"
              xmlns:viewmodels="clr-namespace:ClientesApp.ViewModels"
              xmlns:handlers="clr-namespace:ClientesApp.Handlers"
+             xmlns:behaviors="clr-namespace:ClientesApp.Behaviors"
              xmlns:views="clr-namespace:ClientesApp.Views.FontIcons"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodels:ClienteDetailViewModel"
@@ -157,7 +158,11 @@
                                 HorizontalOptions="FillAndExpand"
                                 Keyboard="Default"
                                 Placeholder="Idade"
-                                PlaceholderColor="{DynamicResource PlaceholderColor}" />
+                                PlaceholderColor="{DynamicResource PlaceholderColor}">
+                                <Entry.Behaviors>
+                                    <behaviors:NumericValidationBehavior />
+                                </Entry.Behaviors>
+                            </handlers:BorderlessEntry>
                         </StackLayout>
                     </Border>
                 </StackLayout>

@@ -95,6 +95,12 @@ namespace ClientesApp.ViewModels
                 aux = false;
             }
 
+            if (Cliente.Age > 120)
+            {
+                AgeError = "* Idade máxima é 120 anos";
+                aux = false;
+            }
+
             if (string.IsNullOrEmpty(Cliente.Address.Street))
             {
                 StreetError = "* O campo rua é obrigatório";

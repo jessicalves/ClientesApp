@@ -8,6 +8,7 @@
 *.suo
 *.user
 *.userosscache
+
 *.sln.docstates
 
 # User-specific files (MonoDevelop/Xamarin Studio)
@@ -361,3 +362,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Arquivos de configuração da IDE
+.idea/
